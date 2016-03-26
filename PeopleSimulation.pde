@@ -76,6 +76,7 @@ class Person{
       //Add to movement vector
     }
     direc.setMag(pSpeed);
+    dist
     X = X+direc.x;
     Y = Y+direc.y;
   }
@@ -92,9 +93,10 @@ void move(){
   }
 }
 int distW(int wid, int position){
+  int prop = 0;
   int dis = (wid/2)-abs((wid/2) - position);
   if(dis<50){
-    int prop = 1.1-(x(1.1/50));
+    prop = 1.1-(x(1.1/50));
   }
   return prop;
 }
