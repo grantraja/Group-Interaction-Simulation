@@ -6,7 +6,7 @@ print "Creating personality traits for %d" % numberOfPeople
 # Trait names and weight - all relative to each other, no upper/lower limit
 statusDetails = [
     ["energy", 15.0],
-    ["hunger", 7.0],
+    ["hunger", 5.0],
     ["happiness", 10.0]
 ]
 
@@ -17,7 +17,7 @@ personalityDetails = [
     ["Temper", -4.0, 2], # Negative weight will do opposite
     ["Intelligence", 9.0, 3],
     ["Popularity", 6.0, 2],
-    ["PolitcalCorrectness", 8.0, 3],
+    ["PolitcalCorrectness", 3.0, 4],
     ["Charisma", 13.0, 1],
     ["Attractiveness", 10.0, 0]
 ]
@@ -54,8 +54,9 @@ for i in range(0, numberOfPeople): # Loop through and create all objects
         statusTraits.append(random.uniform(0, 100)) # Set random float between 0 and 100
         print "%s trait: %s" % (statusDetails[j][0], statusTraits[j]) # Print each status value
 
-    print "" # Print new line
     allPeople.append(Person(personalityTraits, statusTraits))
+    print "Overall status attraction: %s" % allPeople[i].statusAttraction
+    print "" # Print new line
 
 # *************************** Comparing to Other People ***************************
 print "Created all people. Now generating unique attraction values"
