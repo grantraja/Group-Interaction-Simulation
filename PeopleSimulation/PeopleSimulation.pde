@@ -1,6 +1,6 @@
 //sets the size of the stage
-int sizeX = 400;
-int sizeY = 400;
+int sizeX = 600;
+int sizeY = 600;
 int GAP = 20;
 int pSpace = 25; //Personal Space
 float pSpeed = 0.4; //Personal Speed
@@ -76,7 +76,7 @@ class Person{
       //Add to movement vector
     }
     direc.setMag(pSpeed);
-    dist
+    //dist
     X = X+direc.x;
     Y = Y+direc.y;
   }
@@ -92,11 +92,11 @@ void move(){
     people.get(i).move();
   }
 }
-int distW(int wid, int position){
-  int prop = 0;
+float distW(int wid, int position){
+  float prop = 0;
   int dis = (wid/2)-abs((wid/2) - position);
   if(dis<50){
-    prop = 1.1-(x(1.1/50));
+    prop = 1.1-(position*(1.1/50));
   }
   return prop;
 }
