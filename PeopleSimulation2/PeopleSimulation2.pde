@@ -12,8 +12,9 @@ int pWidth = 20;
 int lineSight = 150;
 int wallSight = 50;
 int debugger = 0;
+int debugger2 = 0;
 int mouseUse = 0;
-String mouseTools[] = {"debug","spawn"};
+String mouseTools[] = {"debug","debug 2","spawn"};
 //creates a central list of people
 ArrayList<Person> people;
 //this creates a new instance of the object person
@@ -83,6 +84,7 @@ class Person {
   private int repulsions;
   private boolean blue = false;
   private boolean debug = false;
+  private boolean debug2 = false;
   private float significance = 0;
   private PVector personalMomentum, push, netForce, buffer;
   //this is the initialization, here is where each person recieves the input on what position they are in
@@ -139,6 +141,11 @@ class Person {
       ellipse(round(X), round(Y), lineSight*2, lineSight*2);
       debugData();
     }
+    if (debug2){
+      noFill();
+      stroke(0,0,0);
+      rect((round(X)-(pWidth/2)),(round(Y)-(pWidth/2)),pWidth,pWidth);
+    }
   }
   void localAttraction() {
     attractions = 0;
@@ -168,6 +175,11 @@ class Person {
         float nY=netForce.y;
         netForce.set(nX+push.x, nY+push.y);
         netForce.setMag(pSpeed/pReflex);
+        if(debug){
+          if(i==debugger2){
+            text(significance,675,75);
+          }
+        }
       }
     }
     }
@@ -246,7 +258,15 @@ void mousePressed() {
         return;
       }
     }
-  } else if (mouseUse == 1){
+  } else if(mouseUse == 1){
+    for (int i=0;i<people.size();i++) {
+      if(dist(mouseX, mouseY, people.get(i).X, people.get(i).Y)<pWidth){
+        people.get(debugger2).debug2 = false;
+        debugger2 = i;
+        people.get(i).debug2 = true;
+        return;
+      }
+    }  }else if (mouseUse == 2){
     spawn(false, mouseX, mouseY);
   }  
 }
@@ -263,7 +283,7 @@ void keyPressed(){
   }
   if (key == 'o'){
     mouseUse++;
-    if(mouseUse > 1){
+    if(mouseUse > 2){
       mouseUse = 0;
     }
   }
@@ -272,6 +292,18 @@ void draw() {
   background(255, 255, 255);  
   if (go) {
     move();
+  }
+  if(debugger != debugger2){
+    float X = people.get(debugger).X;
+    float Y = people.get(debugger).Y;
+    float oX = people.get(debugger2).X;
+    float oY = people.get(debugger2).Y;
+    text(debugger2,600,50);
+    text(oX,650,50);
+    text(oY,700,50);
+    text(dist(X,Y,oX,oY),675,65);
+    //text(people.get(debugger).significance,675,75);
+    //text(people.get(debugger2).significance,675,75);    
   }
   display();  
   noFill();
