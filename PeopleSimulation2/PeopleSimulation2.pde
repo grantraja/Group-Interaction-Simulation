@@ -291,6 +291,7 @@ void setup() {
   people = new ArrayList();
   size(sizeX, sizeY);
   spawnMulti(pop);
+  generateAttractionValues();
 }
 void draw() {
   background(255, 255, 255);  
@@ -303,4 +304,3 @@ void draw() {
   noFill();
   rect(wallSight, wallSight, (sizeX-(2*wallSight)), (sizeY-(2*wallSight)));
 }
-

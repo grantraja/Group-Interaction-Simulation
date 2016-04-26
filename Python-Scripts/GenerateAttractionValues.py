@@ -82,7 +82,7 @@ for i in range(0, len(allPeople)):
         if j != i: # If not itself
             netAttraction = 0
             for k in range(0, len(allPeople[j].personalityTraits)): # Cycle through all personality traits
-                # Moree attraction if both high
+                # More attraction if both high
                 currentPersonalityNet = abs(currentPerson.personalityTraits[k] + allPeople[j].personalityTraits[k])
 
                 # If different, will decrease attraction - only if drastically different
