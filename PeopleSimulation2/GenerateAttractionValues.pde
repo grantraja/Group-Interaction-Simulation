@@ -1,8 +1,4 @@
-String statusDetailsNames[] = {"energy", "hunger", "happiness"};
-float statusDetailsValues[] = {15.0, 5.0, 10.0};
-String personalityDetailsNames[] = {"Kindness", "Temper", "Intelligence", "Popularity", "PoliticalCorrectness", "Charisma", "Attractiveness"};
-float personalityDetailsValues[] = {15.0, -4.0, 9.0, 6.0, 3.0, 13.0, 10.0};
-int personalityDetailsExponentialWeight[] = {2, 2, 3, 2, 4, 1, 0};
+
 
 ArrayList<StatusDetail> statusDetails = new ArrayList<StatusDetail>(); // Status details
 ArrayList<PersonalityDetail> personalityDetails = new ArrayList<PersonalityDetail>(); // Personality details
@@ -162,4 +158,5 @@ void generateAttractionValues() {
   populateIndividuals(); // Create individuals
   println("Populated individuals"); // Feedback
   compareIndividuals(); // Calculate unique attraction values between each person
+  println("Generated attraction values between each individual");
 }

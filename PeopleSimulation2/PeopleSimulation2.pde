@@ -1,14 +1,16 @@
 //inputs
-int pop = 100; // number of people in the simulation
+int pop = 125; // number of people in the simulation
 int sizeX = 800; // the width of the Room
 int sizeY = 800; // the length of the Room
-int pReflex = 10; // how quickly people react to each other
+int pReflex = 5; // how quickly people react to each other
 int pWidth = 20; // the diameter of an average person
-int lineSight = 150; //the distance an average person can see
+int lineSight = 125; //the distance an average person can see
 int wallSight = 50;  //how far from the wall a person must be before they try to return to the center of the room
 int spawnBuffer = 20; // how close to the walls people can spawn
-float centerPullMag = 0.05; // how attracted each person is to the center
+float centerPullMag = 0.005; // how attracted each person is to the center
 float pSpeed = 0.6; //how many pixels each person travels per step
+float speeds[] = {.2, .6, 1.0, 1.8, 2.5, 4.0, 8.0}; // Potential speeds, toggle by pressing 's'
+int speedIndex = 1; // Starting speed in the array
 
 
 //internal variables
@@ -283,6 +285,14 @@ void keyPressed() {
     if (mouseUse > 1) {
       mouseUse = 0;
     }
+  }
+  else if (key == 's') {
+    speedIndex++; // Next speed level
+    if (speedIndex >= speeds.length) { // If out of bounds
+      speedIndex = 0; // Reset
+    }
+    pSpeed = speeds[speedIndex]; // Set speed
+    println("Toggled speed to", pSpeed); // Feedback
   }
 }
 
