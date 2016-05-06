@@ -24,3 +24,12 @@ int personalityDetailsExponentialWeight[] = {
   2, 2, 3, 2, 1,
   3, 1, 1
 };
+
+// Interests
+String interestsDetailsNames[] = {
+  "Sports", "Singing", "Music"
+};
+
+float interestsDetailsValues[] = {
+  10.0, 10.0, 10.0
+}
